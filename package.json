@@ -3,13 +3,20 @@
   "version": "1.0.0",
   "description": "A litle demo repo",
   "main": "scripts/index.js",
+  "config": {
+    "sources": "scripts/"
+  },
   "scripts": {
     "first": "Echo \"Hello scripting\"",
-    "start": "node scripts/index.js",
-    "clean": "rm -f scripts/index.min.js",
-    "jshint": "jshint scripts/",
-    "minify": "minify scripts/",
-    "build": "npm run clean && npm run jshint && npm run minify"
+    "start": "node $npm_package_config_sources/index.js",
+    "clean": "rm -f $npm_package_config_sources/index.min.js",
+    "jshint": "jshint $npm_package_config_sources",
+    "minify": "minify $npm_package_config_sources",
+    "echo:js": "echo js/",
+    "echo:html": "echo html/",
+    "prebuild": "npm run clean",
+    "build": "npm-run-all jshint minify echo:*",
+    "print:sources": "echo $npm_package_config_sources"
   },
   "keywords": [
     "npm-run"
@@ -18,6 +25,7 @@
   "license": "ISC",
   "devDependencies": {
     "jshint": "^2.8.0",
-    "minifier": "^0.7.1"
+    "minifier": "^0.7.1",
+    "npm-run-all": "^1.4.0"
   }
 }
