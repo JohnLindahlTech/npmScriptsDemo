@@ -1,0 +1,23 @@
+{
+  "name": "npm-scripts-demo",
+  "version": "1.0.0",
+  "description": "A litle demo repo",
+  "main": "scripts/index.js",
+  "scripts": {
+    "first": "Echo \"Hello scripting\"",
+    "start": "node scripts/index.js",
+    "clean": "rm -f scripts/index.min.js",
+    "jshint": "jshint scripts/",
+    "minify": "minify scripts/",
+    "build": "npm run clean && npm run jshint && npm run minify"
+  },
+  "keywords": [
+    "npm-run"
+  ],
+  "author": "john@johnphoto.se",
+  "license": "ISC",
+  "devDependencies": {
+    "jshint": "^2.8.0",
+    "minifier": "^0.7.1"
+  }
+}
